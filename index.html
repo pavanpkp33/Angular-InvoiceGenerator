@@ -1,0 +1,76 @@
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<title> Orders</title>
+</head>
+
+<body>
+
+<div class="container">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <div class="navbar-header">
+	<a class="navbar-brand" href="#">Orders and Payments</a>
+	</div>
+	</div>
+	</nav>
+<div ng-app="myApp">
+<div ng-controller="orderGenerator">
+<div class="row">
+
+    <div class="col-sm-6">
+	<div class="jumbotron">
+	<p>Place your order</p>
+	<table class="table table-hover">
+	<tr><th>Item</th><th>Price ($)</th><th>Quantity</th><th></th></tr>
+	<tbody>
+ <tr ng-repeat="item in items">
+  <td>{{item.Name}} </td>
+  <td>{{item.Price}} </td>
+  <td><input type="number" min="0" max="99" ng-model="item.Quantity" />
+  <td><button type="button" class="btn btn-sm btn-success"  ng-click="addItem(item)" >Add</button></td>
+  </tr>
+    </tbody>
+	
+	</table>
+	</div>
+	</div>
+	<div class="col-sm-2">	</div>
+	 <div class="col-sm-6">
+	<div class="jumbotron">
+	<p>Order Summary</p>
+	<table class="table table-hover">
+	<tr><th>Item</th><th>Quantity</th><th></th></tr>
+	<tbody>
+ <tr ng-repeat="item in selectedItems">
+  <td>{{item.Name}} </td>
+  <td>{{item.Quantity}} </td>  
+  <td><button type="button" class="btn btn-sm btn-danger" value="Remove" ng-click="removeItem($index)" >Remove</button></td>
+  </tr>
+    <tr><td>Total ($):</td><td>{{generateBill()}} </td></tr>
+    </tbody>
+	
+	</table>
+	<a class="btn btn-sm btn-info" value="generate" ng-click="invoice()" href="#bill" >Generate Invoice</a>
+	</div>
+	</div>
+	
+</div>
+<div class="row">
+<div class="col-sm-12"><div id="bill" class="jumbotron"><p>Invoice</p><hr/>
+<p id="shopHeading"></p>
+<p id ="billingTable"></p>
+<hr/>
+<p id= "grandTotal"></p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
