@@ -2,7 +2,6 @@ Welcome to the Angular-InvoiceGenerator wiki!
 
 ***
 
-![Mpower Logo](http://pavankp.website/mPower_black.png)
 
 # Simple angular application to take orders and generate invoice.
 
